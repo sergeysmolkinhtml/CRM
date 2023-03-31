@@ -11,21 +11,27 @@
         <div class="card-header">Contact information</div>
 
         <div class="card-body">
+            <img class="rounded mx-auto ms-10"
+                 src="https://img.mercedes-benz-kiev.com/data/purchase/amg-gt-coupe/0952611142/mercedes-amg-gt-r-1.jpg"
+                 alt="..." height="290" width="260">
             <form action="{{ route('profile.update') }}" method="POST">
                 @csrf
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label class="required" for="first_name">First name</label>
+                        <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}"
+                               type="text" name="first_name" id="first_name"
+                               value="{{ old('first_name', auth()->user()->first_name) }}" required>
 
-                <div class="form-group">
-                    <label class="required" for="first_name">First name</label>
-                    <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" type="text" name="first_name" id="first_name" value="{{ old('first_name', auth()->user()->first_name) }}" required>
-                    @if($errors->has('first_name'))
-                        <div class="invalid-feedback">
-                            {{ $errors->first('first_name') }}
-                        </div>
-                    @endif
-                    <span class="help-block"> </span>
-                </div>
+                        @if($errors->has('first_name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('first_name') }}
+                            </div>
+                        @endif
+                        <span class="help-block"> </span>
+                    </div>
 
-                <div class="form-group">
+                    <div class="form-group">
                     <label class="required" for="last_name">Last name</label>
                     <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" type="text" name="last_name" id="last_name" value="{{ old('last_name', auth()->user()->last_name) }}" required>
                     @if($errors->has('last_name'))
@@ -57,7 +63,7 @@
                     @endif
                     <span class="help-block"> </span>
                 </div>
-
+                </div>
                 <button class="btn btn-primary" type="submit">
                     Save
                 </button>
