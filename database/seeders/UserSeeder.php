@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
 
         $user->assignRole('user');
 
-        User::factory()->count(50)->create();
-        User::factory()->count(20)->deleted()->create();
+        User::factory(50)->create();
+
     }
 }
