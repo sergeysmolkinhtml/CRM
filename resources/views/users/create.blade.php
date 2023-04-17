@@ -5,7 +5,7 @@
         <div class="card-header">Create user</div>
 
         <div class="card-body">
-            <form action="{{ route('users.store') }}">
+            <form action="{{ route('admin.users.store') }}">
                 @csrf
 
                 <div class="form-group">

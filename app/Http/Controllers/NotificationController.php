@@ -18,13 +18,13 @@ class NotificationController extends Controller
     {
         $notification->markAsRead();
 
-        return redirect()->route('notifications.index');
+        return redirect()->route('admin.notifications.index');
     }
 
     public function destroy()
     {
         auth()->user()->unreadNotifications->markAsRead();
 
-        return redirect()->route('notifications.index');
+        return redirect()->route('admin.notifications.index');
     }
 }

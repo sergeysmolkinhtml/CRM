@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('clients.update', $client) }}" method="POST">
+    <form action="{{ route('admin.clients.update', $client) }}" method="POST">
         @csrf
         @method('PUT')
 

@@ -3,7 +3,7 @@
 @section('content')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('projects.create') }}">
+            <a class="btn btn-success" href="{{ route('admin.projects.create') }}">
                 Create project
             </a>
         </div>
@@ -20,7 +20,7 @@
             @endif
 
             <div class="d-flex justify-content-end">
-                <form action="{{ route('projects.index') }}" method="GET">
+                <form action="{{ route('admin.projects.index') }}" method="GET">
                     <div class="form-group row">
                         <label for="status" class="col-form-label">Status:</label>
                         <div class="col-sm-8">
@@ -50,17 +50,17 @@
                 <tbody>
                 @foreach($projects as $project)
                     <tr>
-                        <td><a href="{{ route('projects.show', $project) }}">{{ $project->title }}</a></td>
+                        <td><a href="{{ route('admin.projects.show', $project) }}">{{ $project->title }}</a></td>
                         <td>{{ $project->user->full_name }}</td>
                         <td>{{ $project->client->company_name }}</td>
                         <td>{{ $project->deadline }}</td>
                         <td>{{ $project->status }}</td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="{{ route('projects.edit', $project) }}">
+                            <a class="btn btn-sm btn-info" href="{{ route('admin.projects.edit', $project) }}">
                                 Edit
                             </a>
                             @can('delete')
-                                <form action="{{ route('projects.destroy', $project) }}" method="POST"
+                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
                                       onsubmit="return confirm('Are your sure?');" style="display: inline-block;">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

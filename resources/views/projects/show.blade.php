@@ -76,17 +76,17 @@
                             <tbody>
                                 @foreach($project->tasks as $task)
                                     <tr>
-                                        <td><a href="{{ route('tasks.show', $task) }}">{{ $task->title }}</a></td>
+                                        <td><a href="{{ route('admin.tasks.show', $task) }}">{{ $task->title }}</a></td>
                                         <td>{{ $task->user->first_name }}</td>
                                         <td>{{ $task->client->company_name }}</td>
                                         <td>{{ $task->deadline }}</td>
                                         <td>{{ $task->status }}</td>
                                         <td>
-                                            <a class="btn btn-sm btn-info" href="{{ route('tasks.edit', $task) }}">
+                                            <a class="btn btn-sm btn-info" href="{{ route('admin.tasks.edit', $task) }}">
                                                 Edit
                                             </a>
                                             @can('delete')
-                                                <form action="{{ route('tasks.destroy', $task) }}" method="POST"
+                                                <form action="{{ route('admin.tasks.destroy', $task) }}" method="POST"
                                                       onsubmit="return confirm('Are your sure?');"
                                                       style="display: inline-block;">
                                                     <input type="hidden" name="_method" value="DELETE">
@@ -101,7 +101,7 @@
                         </table>
                     @else
                         <div class="alert alert-info" role="alert">
-                            No tasks added to this project. <a href="{{ route('tasks.create') }}">Create task now.</a>
+                            No tasks added to this project. <a href="{{ route('admin.tasks.create') }}">Create task now.</a>
                         </div>
                     @endif
                 </div>

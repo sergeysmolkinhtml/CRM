@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form action="{{ route('tasks.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.tasks.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="card">

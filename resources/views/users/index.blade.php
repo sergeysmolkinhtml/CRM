@@ -3,7 +3,7 @@
 @section('content')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('users.create') }}">
+            <a class="btn btn-success" href="{{ route('admin.users.create') }}">
                 Create user
             </a>
         </div>
@@ -14,7 +14,7 @@
 
         <div class="card-body">
             <div class="d-flex justify-content-end">
-                <form action="{{ route('users.index') }}" method="GET">
+                <form action="{{ route('admin.users.index') }}" method="GET">
                     <div class="form-group">
                         <label for="deleted" class="col-form-label">Show deleted:</label>
                             <select class="form-control" name="deleted" id="deleted" onchange="this.form.submit()">
@@ -55,10 +55,10 @@
                             <td>{{ $user->deleted_at ?? 'Not deleted' }}</td>
                         @endif
                         <td>
-                            <a class="btn btn-sm btn-info" href="{{ route('users.edit', $user) }}">
+                            <a class="btn btn-sm btn-info" href="{{ route('admin.users.edit', $user) }}">
                                 Edit
                             </a>
-                            <form action="{{ route('users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are your sure?');" style="display: inline-block;">
+                            <form action="{{ route('admin.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are your sure?');" style="display: inline-block;">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <input type="submit" class="btn btn-sm btn-danger" value="Delete">

@@ -42,7 +42,7 @@ class TaskController extends Controller
 
         Mail::to($user)->send(new MailTaskAssigned($task));
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('admin.tasks.index');
     }
 
     public function show(Task $task)
@@ -73,7 +73,7 @@ class TaskController extends Controller
 
         $task->update($request->validated());
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('admin.tasks.index');
     }
 
     public function destroy(Task $task)
@@ -88,6 +88,6 @@ class TaskController extends Controller
            }
         }
 
-        return redirect()->route('tasks.index');
+        return redirect()->route('admin.tasks.index');
     }
 }

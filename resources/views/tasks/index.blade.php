@@ -3,7 +3,7 @@
 @section('content')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('tasks.create') }}">
+            <a class="btn btn-success" href="{{ route('admin.tasks.create') }}">
                 Create task
             </a>
         </div>
@@ -20,7 +20,7 @@
             @endif
 
             <div class="d-flex justify-content-end">
-                <form action="{{ route('tasks.index') }}" method="GET">
+                <form action="{{ route('admin.tasks.index') }}" method="GET">
                     <div class="form-group row">
                         <label for="status" class="col-form-label">Status:</label>
                         <div class="col-sm-8">
@@ -50,17 +50,17 @@
                 <tbody>
                 @foreach($tasks as $task)
                     <tr>
-                        <td><a href="{{ route('tasks.show', $task) }}">{{ $task->title }}</a></td>
+                        <td><a href="{{ route('admin.tasks.show', $task) }}">{{ $task->title }}</a></td>
                         <td>{{ $task->user->first_name }}</td>
                         <td>{{ $task->client->company_name }}</td>
                         <td>{{ $task->deadline }}</td>
                         <td>{{ $task->status }}</td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="{{ route('tasks.edit', $task) }}">
+                            <a class="btn btn-sm btn-info" href="{{ route('admin.tasks.edit', $task) }}">
                                 Edit
                             </a>
                             @can('delete')
-                                <form action="{{ route('tasks.destroy', $task) }}" method="POST" onsubmit="return confirm('Are your sure?');" style="display: inline-block;">
+                                <form action="{{ route('admin.tasks.destroy', $task) }}" method="POST" onsubmit="return confirm('Are your sure?');" style="display: inline-block;">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="submit" class="btn btn-sm btn-danger" value="Delete">

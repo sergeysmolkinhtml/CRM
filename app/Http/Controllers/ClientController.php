@@ -28,7 +28,7 @@ class ClientController extends Controller
     {
         Client::create($request->validated());
 
-        return redirect()->route('clients.index');
+        return redirect()->route('admin.clients.index');
     }
 
     public function show(Client $client)
@@ -45,7 +45,7 @@ class ClientController extends Controller
     {
         $client->update($request->validated());
 
-        return redirect()->route('clients.index');
+        return redirect()->route('admin.clients.index');
     }
 
     public function destroy(Client $client)
@@ -60,6 +60,6 @@ class ClientController extends Controller
             }
         }
 
-        return redirect()->route('clients.index');
+        return redirect()->route('admin.clients.index');
     }
 }

@@ -16,7 +16,7 @@ class ProfileController extends Controller
     {
         auth()->user()->update($request->validated());
 
-        return redirect()->route('profile.index')->with('status', 'Contacts updated.');
+        return redirect()->route('admin.profile.index')->with('status', 'Contacts updated.');
     }
 
     public function changePassword(ChangePasswordRequest $request)
@@ -25,6 +25,6 @@ class ProfileController extends Controller
             'password' => bcrypt($request->new_password),
         ]);
 
-        return redirect()->route('profile.index')->with('status', 'Password changed.');
+        return redirect()->route('admin.profile.index')->with('status', 'Password changed.');
     }
 }

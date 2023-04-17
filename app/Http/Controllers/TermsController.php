@@ -17,6 +17,6 @@ class TermsController extends Controller
             'terms_accepted' => true
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('admin.home');
     }
 }

@@ -36,7 +36,7 @@ class ProjectController extends Controller
 
         $user->notify(new ProjectAssigned($project));
 
-        return redirect()->route('projects.index');
+        return redirect()->route('admin.projects.index');
     }
 
     public function show(Project $project)
@@ -64,7 +64,7 @@ class ProjectController extends Controller
 
         $project->update($request->validated());
 
-        return redirect()->route('projects.index');
+        return redirect()->route('admin.projects.index');
     }
 
     public function destroy(Project $project)
@@ -79,6 +79,6 @@ class ProjectController extends Controller
            }
         }
 
-        return redirect()->route('projects.index');
+        return redirect()->route('admin.projects.index');
     }
 }

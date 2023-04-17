@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         User::create($request->validated());
 
-        return redirect()->route('users.index');
+        return redirect()->route('admin.users.index');
     }
 
     public function edit(User $user)
@@ -46,13 +46,13 @@ class UserController extends Controller
     {
         $user->update($request->validated());
 
-        return redirect()->route('users.index');
+        return redirect()->route('admin.users.index');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
 
-        return redirect()->route('users.index');
+        return redirect()->route('admin.users.index');
     }
 }

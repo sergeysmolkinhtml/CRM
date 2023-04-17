@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-8">
-            <form action="{{ route('projects.update', $project) }}" method="POST">
+            <form action="{{ route('admin.projects.update', $project) }}" method="POST">
                 @csrf
                 @method('PUT')
 
@@ -111,7 +111,7 @@
             <div class="card">
                 <div class="card-header">Files</div>
                 <div class="card-body">
-                    <form action="{{ route('media.upload', ['Project', $project]) }}" method="POST"
+                    <form action="{{ route('admin.media.upload', ['Project', $project]) }}" method="POST"
                           enctype="multipart/form-data">
                         @csrf
 

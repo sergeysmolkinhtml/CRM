@@ -3,7 +3,7 @@
 @section('content')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('clients.create') }}">
+            <a class="btn btn-success" href="{{ route('admin.clients.create') }}">
                 Create client
             </a>
         </div>
@@ -35,11 +35,11 @@
                         <td>{{ $client->company_vat }}</td>
                         <td>{{ $client->company_address }}</td>
                         <td>
-                            <a class="btn btn-xs btn-info" href="{{ route('clients.edit', $client) }}">
+                            <a class="btn btn-xs btn-info" href="{{ route('admin.clients.edit', $client) }}">
                                 Edit
                             </a>
                             @can('delete')
-                                <form action="{{ route('clients.destroy', $client) }}" method="POST" onsubmit="return confirm('Are your sure?');" style="display: inline-block;">
+                                <form action="{{ route('admin.clients.destroy', $client) }}" method="POST" onsubmit="return confirm('Are your sure?');" style="display: inline-block;">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="submit" class="btn btn-xs btn-danger" value="Delete">
