@@ -7,6 +7,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\Teams\TeamsController;
 use App\Http\Controllers\TermsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,9 @@ Auth::routes();
 Route::permanentRedirect('/', 'login');
 
 Route::group(['middleware' => ['auth']], function (){
-    Route::get('/teams/dashboard', function (){
-        return 'teams';
-    });
+    Route::get('teams/dashboard', [TeamsController::class,'index'])->withoutMiddleware('auth')->name('teams.index');
+    Route::get('teams/{team}',[TeamsController::class,'show'])->withoutMiddleware('auth')->name('teams.show');
+    Route::resource('teams', TeamsController::class)->except('index','show');
 });
 
 Route::get('email/verify', '\App\Http\Controllers\Auth\VerificationController@show')->name('verification.notice');
@@ -51,7 +52,6 @@ Route::group(['middleware' => ['auth', 'termsAccepted', 'role:admin'], 'prefix' 
     Route::get('token', function () {
         return auth()->user()->createToken('crm')->plainTextToken;
     });
-
 });
 
 Route::get('terms', [TermsController::class, 'index'])->middleware('auth')->name('terms.index');
