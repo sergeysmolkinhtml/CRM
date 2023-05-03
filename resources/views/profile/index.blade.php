@@ -14,7 +14,7 @@
             <img class="rounded mx-auto ms-10"
                  src="https://img.mercedes-benz-kiev.com/data/purchase/amg-gt-coupe/0952611142/mercedes-amg-gt-r-1.jpg"
                  alt="..." height="290" width="260">
-            <form action="{{ route('profile.update') }}" method="POST">
+            <form action="{{ route('admin.profile.update') }}" method="POST">
                 @csrf
                 <div class="col-md-2">
                     <div class="form-group">
@@ -75,7 +75,7 @@
         <div class="card-header">Change password</div>
 
         <div class="card-body">
-            <form action="{{ route('profile.changePassword') }}" method="POST">
+            <form action="{{ route('admin.profile.changePassword') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
