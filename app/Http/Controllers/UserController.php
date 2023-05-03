@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Employee;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\CreateUserRequest;
 

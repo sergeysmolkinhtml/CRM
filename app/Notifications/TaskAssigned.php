@@ -3,7 +3,7 @@
 namespace App\Notifications;
 
 use App\Models\Task;
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;

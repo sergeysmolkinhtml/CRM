@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Support\Facades\Cache;
 
 class ApiUserObserver

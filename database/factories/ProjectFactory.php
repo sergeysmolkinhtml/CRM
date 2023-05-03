@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Employee;
 use App\Models\Client;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

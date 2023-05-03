@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Employee;
 use App\Models\Task;
 use App\Models\Client;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Http\Response;
 use App\Notifications\TaskAssigned;
 use Illuminate\Support\Facades\Mail;

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutUs;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MediaController;
@@ -21,6 +22,8 @@ Route::group(['middleware' => ''], function (){
     Route::get('teams/{team}',[TeamsController::class,'show'])->withoutMiddleware('auth')->name('teams.show');
     Route::resource('teams', TeamsController::class)->except('index','show');
 });
+
+Route::get('about',AboutUs::class)->name('about_us');
 
 Route::get('email/verify', '\App\Http\Controllers\Auth\VerificationController@show')->name('verification.notice');
 Route::get('email/verify/{id}/{hash}', '\App\Http\Controllers\Auth\VerificationController@verify')->name('verification.verify');
