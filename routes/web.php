@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::permanentRedirect('/', 'login');
 
-Route::group(['middleware' => ['auth']], function (){
+Route::group(['middleware' => ''], function (){
     Route::get('teams/dashboard', [TeamsController::class,'index'])->withoutMiddleware('auth')->name('teams.index');
     Route::get('teams/{team}',[TeamsController::class,'show'])->withoutMiddleware('auth')->name('teams.show');
     Route::resource('teams', TeamsController::class)->except('index','show');

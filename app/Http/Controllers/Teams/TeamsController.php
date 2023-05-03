@@ -21,9 +21,9 @@ class TeamsController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        //
+       return view('teams.create');
     }
 
     /**
@@ -31,7 +31,7 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -39,7 +39,7 @@ class TeamsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('teams.show');
     }
 
     /**
@@ -47,7 +47,7 @@ class TeamsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('teams.edit');
     }
 
     /**

@@ -31,6 +31,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'terms_accepted',
     ];
 
+    public const FILTER = ['true', 'false'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -41,8 +43,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-    public const FILTER = ['true', 'false'];
-
     /**
      * The attributes that should be cast to native types.
      *
@@ -51,6 +51,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected $dates = ['created_at'];
+
 
     public function projects(): HasMany
     {
