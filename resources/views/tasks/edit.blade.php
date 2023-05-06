@@ -162,7 +162,7 @@
                                     <th scope="row">{{ $media->file_name }}</th>
                                     <td>{{ $media->human_readable_size }}</td>
                                     <td>
-                                        <a class="btn btn-xs btn-info" href="{{ route('media.download', $media) }}">
+                                        <a class="btn btn-xs btn-info" href="{{ route('admin.media.download', $media) }}">
                                             Download
                                         </a>
                                         <form action="{{ route('media.delete', ['Project', $task, $media]) }}" method="POST" onsubmit="return confirm('Are your sure?');" style="display: inline-block;">

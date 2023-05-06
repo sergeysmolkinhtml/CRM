@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\CreateUserRequest;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -49,7 +50,7 @@ class UserController extends Controller
         return redirect()->route('admin.users.index');
     }
 
-    public function destroy(User $user)
+    public function destroy(User $user): \Illuminate\Http\RedirectResponse
     {
         $user->delete();
 
