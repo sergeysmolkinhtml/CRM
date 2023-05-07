@@ -3,12 +3,10 @@
 namespace App\Observers;
 
 use App\Config\DefaultConfig;
-use App\EmployeeStatus;
 use App\Models\Employee\EmployeeDetails;
 use App\Models\Employee\EmployeeStatus;
 use App\Position;
 use Carbon\Carbon;
-use NotificationChannels\Discord\Discord;
 
 
 class EmployeeDetailObserver
