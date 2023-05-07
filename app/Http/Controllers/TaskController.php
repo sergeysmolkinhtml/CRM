@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TaskCreated;
 use App\Models\Employee;
 use App\Models\Task;
 use App\Models\Client;
 use App\Models\Project;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use App\Notifications\TaskAssigned;
 use Illuminate\Support\Facades\Mail;
@@ -33,13 +35,15 @@ class TaskController extends Controller
         return view('tasks.create', compact('users', 'clients', 'projects'));
     }
 
-    public function store(CreateTaskRequest $request)
+    public function store(CreateTaskRequest $request): RedirectResponse
     {
         $task = Task::create($request->validated());
 
         $user = User::find($request->user_id);
 
         $user->notify(new TaskAssigned($task));
+
+        event(new TaskCreated($task));
 
         Mail::to($user)->send(new MailTaskAssigned($task));
 

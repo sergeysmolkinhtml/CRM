@@ -25,12 +25,21 @@ class UserObserver
 
     }
 
+    public function updating(User $user): void
+    {
+        if($user->wasChanged()){
+            dd('User changing');
+        }
+    }
+
     /**
      * Handle the User "updated" event.
      */
     public function updated(User $user): void
     {
-
+        if($user->isDirty('email')){
+            dd('Prove');
+        }
     }
 
     /**
