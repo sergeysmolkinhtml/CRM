@@ -39,8 +39,6 @@ class EmployeeDetailObserver
             if ($detail->status_id == $available) {
                 $hiredStatusNewEmployees = EmployeeStatus::where('name', '=', DefaultConfig::$configStatusNameEmployeesHiredCreatedTaskNewEmployees)->pluck('id')->first();
 
-
-
                 $drawPortraitTask = null;
                 $videoTask = null;
                 $resumeTask = null;
