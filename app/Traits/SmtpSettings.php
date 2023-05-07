@@ -1,12 +1,11 @@
 <?php
 
 
-
 namespace App\Traits;
 
 use App\GlobalSetting;
 use App\PushNotificationSetting;
-use App\SmtpSetting;
+use App\Config\SmtpSettings as SMTPConfig;
 use Illuminate\Mail\MailServiceProvider;
 use Illuminate\Support\Facades\Config;
 
