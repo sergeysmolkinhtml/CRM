@@ -15,7 +15,7 @@ class TaskCreatedListener
     public function handle(TaskCreated $event): void
     {
         $admins = User::whereHas('roles', function ($query){
-           $query->where('id',1);
+           $query->where('id', 1);
         })->get();
         Notification::send($admins, new TaskCreatedNotification($event->task));
     }

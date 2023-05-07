@@ -27,15 +27,19 @@ class Task extends Model implements HasMedia
     ];
 
     protected $dispatchesEvents = [
-      'created' => TaskCreated::class
+        'created' => TaskCreated::class
     ];
+
+    protected array $searchableFields = ['title'];
+
+    public const STATUS = ['open', 'in progress', 'pending', 'waiting client', 'blocked', 'closed'];
+
+    protected array $dates = ['deadline'];
 
     protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('Y-m-d H:i:s');
     }
-
-    public const STATUS = ['open', 'in progress', 'pending', 'waiting client', 'blocked', 'closed'];
 
     public function user(): BelongsTo
     {
