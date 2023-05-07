@@ -20,4 +20,48 @@ if (!function_exists('asset_url')) {
 
         return $storageUrl;
     }
+
+    if (!function_exists('isRunningInConsoleOrSeeding')) {
+
+        /**
+         * Check if app is seeding data
+         * @return boolean
+         */
+        function isRunningInConsoleOrSeeding(): bool
+        {
+            // We set config(['app.seeding' => true]) at the beginning of each seeder. And check here
+            return app()->runningInConsole() || isSeedingData();
+        }
+    }
+
+    if (!function_exists('isSeedingData')) {
+
+        /**
+         * Check if app is seeding data
+         * @return boolean
+         */
+        function isSeedingData(): bool
+        {
+            // We set config(['app.seeding' => true]) at the beginning of each seeder. And check here
+            return config('app.seeding');
+        }
+    }
+
+    if (!function_exists('user')) {
+        function user()
+        {
+            if (session()->has('user')) {
+                return session('user');
+            }
+            $user = auth()->user();
+
+            if ($user) {
+                session(['user' => $user]);
+                return session('user');
+            }
+
+            return null;
+        }
+    }
+
 }

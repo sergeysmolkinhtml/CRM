@@ -60,7 +60,7 @@ class NewUserCreated extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail(mixed $notifiable): MailMessage
     {
 
         return (new MailMessage)

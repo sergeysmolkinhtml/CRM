@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Models\User;
-use App\Notifications\NewUser;
+use App\Notifications\NewUserCreated;
 
 class UserObserver
 {
@@ -19,7 +19,7 @@ class UserObserver
             }
 
             if ($sendMail && request()->has('password') && \user()) {
-                $user->notify(new NewUser(request()->password));
+                $user->notify(new NewUserCreated(request()->password));
             }
         }
     }
