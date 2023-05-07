@@ -3,7 +3,7 @@
 namespace App\Notifications;
 
 use App\Config\EmailNotificationSettings;
-use App\SlackSetting;
+use App\Config\SlackSettings;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;

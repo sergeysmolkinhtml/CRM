@@ -22,6 +22,7 @@ class UserObserver
                 $user->notify(new NewUserCreated(request()->password));
             }
         }
+
     }
 
     /**

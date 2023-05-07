@@ -63,5 +63,24 @@ if (!function_exists('asset_url')) {
             return null;
         }
     }
+    if (!function_exists('company')) {
+        function company()
+        {
 
+            if (session()->has('company')) {
+                return session('company');
+            }
+
+            if (user()) {
+                $companyId = user()->company_id;
+                if (!is_null($companyId)) {
+                    $company = \App\Company::find($companyId);
+                    session(['company' => $company]);
+                }
+                return session('company');
+            }
+
+            return false;
+        }
+    }
 }

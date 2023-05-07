@@ -97,7 +97,6 @@ class EmployeeDetailObserver
         }
 
     }
-    }
 
     /**
      * Handle the EmployeeDetails "deleted" event.
