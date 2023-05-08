@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutUs;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Employees\EmployeesList;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InteractionController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfileController;
@@ -54,6 +55,9 @@ Route::group(['middleware' => ['auth', 'termsAccepted', 'role:admin'], 'prefix' 
     Route::post('profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 
     Route::get('employees/list', EmployeesList::class)->name('employees.index');
+    Route::get('employees/{employee}/interactions', [InteractionController::class,'index'])->name('interactions.index');
+    Route::post('interactions', [InteractionController::class,'store'])->name('interactions.store');
+
 
 
     Route::get('token', function () {
