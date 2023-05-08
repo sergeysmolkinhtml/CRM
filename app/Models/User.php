@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Builder;
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -73,11 +74,17 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public static function getUserTasksCount()
     {
-        $users = User::selectRaw('users.id, COUNT(tasks.id) as task_count')
+        return User::selectRaw('users.id, COUNT(tasks.id) as task_count')
             ->leftJoin('tasks', 'users.id', '=', 'tasks.user_id')
             ->groupByRaw('users.id')
             ->get();
-
-        return $users;
     }
+
+    public function scopeAllUsers(Builder $query): Builder
+    {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('roles.name', Role::ROLE_USER);
+        });
+    }
+
 }
