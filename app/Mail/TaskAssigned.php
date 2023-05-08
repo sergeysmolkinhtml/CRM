@@ -34,7 +34,7 @@ class TaskAssigned extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.taks.assigned', [
+        return $this->markdown('emails.task.assigned', [
             'title' => $this->task->title,
             'url' => route('admin.tasks.show', $this->task)
         ]);

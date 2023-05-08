@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutUs;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Employees\EmployeesList;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\NotificationController;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::permanentRedirect('/', 'login');
 
-Route::group(['middleware' => ''], function (){
+Route::group(['middleware' => 'auth'], function (){
     Route::get('teams/dashboard', [TeamsController::class,'index'])->withoutMiddleware('auth')->name('teams.index');
     Route::get('teams/{team}',[TeamsController::class,'show'])->withoutMiddleware('auth')->name('teams.show');
     Route::resource('teams', TeamsController::class)->except('index','show');
@@ -52,9 +53,14 @@ Route::group(['middleware' => ['auth', 'termsAccepted', 'role:admin'], 'prefix' 
     Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 
+    Route::get('employees/list', EmployeesList::class)->name('employees.index');
+
+
     Route::get('token', function () {
         return auth()->user()->createToken('crm')->plainTextToken;
     });
+
+
 });
 
 Route::get('terms', [TermsController::class, 'index'])->middleware('auth')->name('terms.index');

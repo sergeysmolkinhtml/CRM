@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -64,8 +66,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return "{$this->first_name} {$this->last_name}";
     }
 
-    public function teams(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class);
+    }
+
+    public static function getUserTasksCount()
+    {
+        $users = User::selectRaw('users.id, COUNT(tasks.id) as task_count')
+            ->leftJoin('tasks', 'users.id', '=', 'tasks.user_id')
+            ->groupByRaw('users.id')
+            ->get();
+
+        return $users;
     }
 }
