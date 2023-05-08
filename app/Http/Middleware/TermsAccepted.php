@@ -14,7 +14,7 @@ class TermsAccepted
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
         if (! $request->user()->terms_accepted) {
             return redirect()->route('terms.index');

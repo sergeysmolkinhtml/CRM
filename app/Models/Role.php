@@ -14,7 +14,7 @@ class Role extends Model
 
     const ROLE_USER = 'user';
 
-    protected $table = 'roles';
+
 
     protected $guarded = [
         'name',
