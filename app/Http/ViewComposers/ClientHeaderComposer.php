@@ -26,6 +26,6 @@ class ClientHeaderComposer
          */
         $contact = $clients->user;
 
-        $view->with('contact', $contact)->with('contact_info', $contact_info);
+        $view->with('contact', $contact)->with('contact_info', $contact_info)->with($clients);
     }
 }

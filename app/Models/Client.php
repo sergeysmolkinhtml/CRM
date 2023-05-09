@@ -10,6 +10,9 @@ class Client extends Model
 {
     use HasFactory;
 
+    const CREATED = 'created';
+    const UPDATED_ASSIGN = 'updated_assign';
+
     protected $fillable = [
         'contact_name',
         'contact_email',
