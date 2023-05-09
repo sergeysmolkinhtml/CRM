@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Exceptions\CannotDelete;
 use App\Http\Requests\CreateClientRequest;
 use App\Http\Requests\EditClientRequest;
 use App\Models\Client;
@@ -12,6 +11,9 @@ use Illuminate\Support\Facades\Gate;
 
 class ClientController extends Controller
 {
+    const CREATED = 'created';
+    const UPDATED_ASSIGN = 'updated_assign';
+
     public function index()
     {
         $clients = Client::paginate(20);
