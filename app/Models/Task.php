@@ -32,9 +32,24 @@ class Task extends Model implements HasMedia
 
     protected array $searchableFields = ['title'];
 
+    protected array $dates = ['deadline'];
+
     public const STATUS = ['open', 'in progress', 'pending', 'waiting client', 'blocked', 'closed'];
 
-    protected array $dates = ['deadline'];
+    public function getRouteKeyName(): string
+    {
+        return 'id';
+    }
+
+    public function displayValue()
+    {
+        return $this->title;
+    }
+
+    public function getAssignedUserAttribute()
+    {
+        return User::findOrFail($this->client_id);
+    }
 
     protected function serializeDate(DateTimeInterface $date): string
     {
@@ -54,5 +69,10 @@ class Task extends Model implements HasMedia
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function getSearchableFields(): array
+    {
+        return $this->searchableFields;
     }
 }

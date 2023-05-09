@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Client;
+use App\Models\Contact;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ClientFactory extends Factory
@@ -19,8 +20,9 @@ class ClientFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
+
         return [
             'contact_name' => $this->faker->name(),
             'contact_email' => $this->faker->safeEmail(),
@@ -31,5 +33,7 @@ class ClientFactory extends Factory
             'company_zip' => $this->faker->randomNumber(5),
             'company_vat' => $this->faker->randomNumber(5),
         ];
+
     }
+
 }
