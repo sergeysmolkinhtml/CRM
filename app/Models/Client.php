@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\ClientAction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -27,6 +28,14 @@ class Client extends Model
     public function setCompanyNameAttribute($value)
     {
         $this->attributes['company_name'] = ucfirst($value);
+    }
+
+    public function updateAssignee(User $user)
+    {
+        $this->user_id = $user->id;
+        $this->save();
+
+        event(new ClientAction($this, self::UPDATED_ASSIGN ));
     }
 
     public function projects(): HasMany
