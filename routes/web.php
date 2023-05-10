@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutUs;
+use App\Http\Controllers\Auth\Socials\GitHubAuthController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Employees\EmployeesList;
 use App\Http\Controllers\HomeController;
@@ -18,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::permanentRedirect('/', 'login');
-
+Route::get('login/github', [GitHubAuthController::class, 'redirectToProvider'])->name('login.github');
+Route::get('auth/github', [GitHubAuthController::class, 'handleProviderCallback']);
 Route::group(['middleware' => 'auth'], function (){
     Route::get('teams/dashboard', [TeamsController::class,'index'])->withoutMiddleware('auth')->name('teams.index');
     Route::get('teams/{team}',[TeamsController::class,'show'])->withoutMiddleware('auth')->name('teams.show');

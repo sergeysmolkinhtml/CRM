@@ -31,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'address',
         'phone_number',
         'terms_accepted',
+        'github_id'
     ];
 
     public const FILTER = ['true', 'false'];
@@ -114,5 +115,9 @@ class User extends Authenticatable implements MustVerifyEmail
         });
     }
 
+    public static function findByGithubId(string $githubId): self
+    {
+        return self::where('github_id', $githubId)->firstOrFail();
+    }
 
 }

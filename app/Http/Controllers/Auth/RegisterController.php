@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\WelcomeEmailNotification;
 use App\Providers\RouteServiceProvider;
 use App\Models\Employee;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -63,7 +64,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return User
      */
     protected function create(array $data): User
     {
@@ -75,7 +76,7 @@ class RegisterController extends Controller
         ]);
 
         $user->assignRole('user');
-
+        //$user->notify(WelcomeEmailNotification::class);
         return $user;
     }
 }

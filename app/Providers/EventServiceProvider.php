@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Events\TaskCreated;
 use App\Listeners\TaskCreatedListener;
+use App\Listeners\WelcomeEmailListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +19,7 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            WelcomeEmailListener::class
         ],
         TaskCreated::class => [
             TaskCreatedListener::class

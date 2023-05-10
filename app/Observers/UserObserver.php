@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\User;
 use App\Notifications\NewUserCreated;
+use App\Notifications\WelcomeEmailNotification;
 
 class UserObserver
 {
@@ -22,6 +23,8 @@ class UserObserver
                 $user->notify(new NewUserCreated(request()->password));
             }
         }
+
+        $user->notify(WelcomeEmailNotification::class);
 
     }
 
