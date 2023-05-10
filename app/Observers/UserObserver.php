@@ -24,7 +24,7 @@ class UserObserver
             }
         }
 
-        $user->notify(WelcomeEmailNotification::class);
+        //$user->notify(WelcomeEmailNotification::class);
 
     }
 

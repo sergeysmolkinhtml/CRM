@@ -22,6 +22,6 @@ class WelcomeEmailListener
      */
     public function handle(Registered $event): void
     {
-        $event->user->notify(new WelcomeEmailNotification());
+        //$event->user->notify(new WelcomeEmailNotification());
     }
 }
