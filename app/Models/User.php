@@ -96,6 +96,11 @@ class User extends Authenticatable implements MustVerifyEmail
         };
     }
 
+    public function emailAddress(): string
+    {
+        return $this->email;
+    }
+
     public function scopeFilterFields($query, array $filters)
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {

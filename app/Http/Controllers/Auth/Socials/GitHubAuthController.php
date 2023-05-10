@@ -21,7 +21,7 @@ class GitHubAuthController extends Controller
     /**
      * Redirect the user to the GitHub authentication page.
      */
-    public function redirectToProvider()
+    public function redirectToProvider(): \Symfony\Component\HttpFoundation\RedirectResponse|RedirectResponse
     {
         return Socialite::driver('github')->redirect();
     }
@@ -29,7 +29,7 @@ class GitHubAuthController extends Controller
     /**
      * Obtain the user information from GitHub.
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(): RedirectResponse
     {
         try {
             $socialiteUser = $this->getSocialiteUser();
