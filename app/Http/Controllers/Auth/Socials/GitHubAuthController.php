@@ -33,6 +33,7 @@ class GitHubAuthController extends Controller
     {
         try {
             $socialiteUser = $this->getSocialiteUser();
+
         } catch (InvalidStateException $exception) {
             $this->error('errors.github_invalid_state');
 
@@ -60,11 +61,11 @@ class GitHubAuthController extends Controller
      */
     private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
     {
-        $this->dispatchSync(new UpdateProfile($user, ['github_username' => $socialiteUser->getNickname()]));
+        dispatch_sync(new UpdateProfile($user, ['github_username' => $socialiteUser->getNickname()]));
 
         Auth::login($user, true);
 
-        return redirect()->route('profile');
+        return redirect()->route('admin.profile.index');
     }
 
     private function userNotFound(GithubUser $user): RedirectResponse

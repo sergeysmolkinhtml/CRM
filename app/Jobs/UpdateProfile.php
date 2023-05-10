@@ -12,8 +12,8 @@ final class UpdateProfile
     private array $attributes;
 
     public function __construct(
-        private User $user,
-        array $attributes = []
+        private readonly User $user,
+        array                 $attributes = []
     ) {
         $this->attributes = Arr::only($attributes, [
             'name', 'email', 'username', 'github_username', 'bio', 'twitter', 'website',
