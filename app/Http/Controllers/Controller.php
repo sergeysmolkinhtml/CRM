@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Artisan;
+use OpenApi\Annotations as OA;
 
 class Controller extends BaseController
 {
@@ -13,6 +14,6 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        Artisan::call('route:clear');
+
     }
 }

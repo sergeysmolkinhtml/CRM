@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\Filter;
+use OpenApi\Annotations as OA;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
