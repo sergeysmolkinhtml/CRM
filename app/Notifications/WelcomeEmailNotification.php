@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class WelcomeEmailNotification extends Notification
+class WelcomeEmailNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -16,7 +16,7 @@ class WelcomeEmailNotification extends Notification
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
