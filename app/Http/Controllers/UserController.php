@@ -6,6 +6,7 @@ use App\Models\Employee;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
@@ -17,11 +18,13 @@ class UserController extends Controller
             $withDeleted = true;
         }
 
-        $users = User::with('roles')
-            ->when($withDeleted, function ($query)  {
-                $query->withTrashed();
-            })
-            ->paginate(20);
+        $users = Cache::remember('users-list', 60*60*24, function () use ($withDeleted) {
+           return User::with('roles')
+                ->when($withDeleted, function ($query) {
+                    $query->withTrashed();
+                    }
+                )->paginate(20);
+           });
 
         return view('users.index', compact('users', 'withDeleted'));
     }
@@ -40,6 +43,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+
         return view('users.edit', compact('user'));
     }
 

@@ -11,7 +11,7 @@ class TermsController extends Controller
         return view('terms');
     }
 
-    public function store(TermsAcceptRequest $request)
+    public function store(TermsAcceptRequest $request): \Illuminate\Http\RedirectResponse
     {
         auth()->user()->update([
             'terms_accepted' => true

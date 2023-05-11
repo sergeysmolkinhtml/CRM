@@ -1,5 +1,7 @@
 <?php
 
+
+use BeyondCode\LaravelWebSockets\WebSockets\Channels\Channel;
 use Illuminate\Support\Facades\Broadcast;
 
 /*
@@ -15,4 +17,8 @@ use Illuminate\Support\Facades\Broadcast;
 
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
+});
+
+Broadcast::channel('live.count.{channel}', function ($user, $channel) {
+    return (int) $user->id === (int) Channel::where('slug', $channel)->first()->owner_id;
 });
