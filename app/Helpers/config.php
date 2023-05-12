@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Company;
 use Illuminate\Support\Str;
 
 if (!function_exists('asset_url')) {
@@ -74,7 +75,7 @@ if (!function_exists('asset_url')) {
             if (user()) {
                 $companyId = user()->company_id;
                 if (!is_null($companyId)) {
-                    $company = \App\Company::find($companyId);
+                    $company = Company::find($companyId);
                     session(['company' => $company]);
                 }
                 return session('company');
@@ -83,4 +84,16 @@ if (!function_exists('asset_url')) {
             return false;
         }
     }
+    if (!function_exists('company_setting')) {
+        function company_setting()
+        {
+//        if (!session()->has('company_setting'))
+            if (auth()->user())
+                session(['company_setting' => Company::with('currency', 'package')->withoutGlobalScope('active')->where('id', auth()->user()->company_id)->first()]);
+
+
+            return session('company_setting');
+        }
+    }
+
 }

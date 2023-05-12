@@ -3,7 +3,6 @@
 use App\Http\Controllers\AboutUs;
 use App\Http\Controllers\Auth\Socials\GitHubAuthController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\Employees\EmployeesList;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InteractionController;
 use App\Http\Controllers\MediaController;
@@ -16,6 +15,7 @@ use App\Http\Controllers\TermsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Employees\Admin\ManageEmployeesController;
 
 Auth::routes();
 Route::permanentRedirect('/', 'login');
@@ -58,11 +58,11 @@ Route::group(['middleware' => ['auth', 'termsAccepted', 'role:admin'], 'prefix' 
     Route::post('profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.changePassword');
 
-    Route::get('employees/list', EmployeesList::class)->name('employees.index');
     Route::get('employees/{employee}/interactions', [InteractionController::class,'index'])->name('interactions.index');
     Route::post('interactions', [InteractionController::class,'store'])->name('interactions.store');
 
-
+    Route::resource('employees', ManageEmployeesController::class);
+    Route::get('get-employees-list', [ManageEmployeesController::class,'getData'])->name('employees.getData');
 
     Route::get('token', function () {
         return auth()->user()->createToken('crm')->plainTextToken;
