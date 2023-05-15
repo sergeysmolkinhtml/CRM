@@ -2,6 +2,9 @@
 
 namespace App\Config;
 
+use Illuminate\Contracts\Routing\UrlGenerator;
+use Illuminate\Foundation\Application;
+
 class DefaultConfig
 {
     public static string $nameProjectCompanyForEmployees = "Taseo";
@@ -58,13 +61,15 @@ class DefaultConfig
         return asset('img/default-profile-3.png');
     }
 
-    public static function getDefaultFolderImg(): \Illuminate\Foundation\Application|string|\Illuminate\Contracts\Routing\UrlGenerator|\Illuminate\Contracts\Foundation\Application
+    public static function getDefaultFolderImg(): Application|string|UrlGenerator|\Illuminate\Contracts\Foundation\Application
     {
         return asset_url('avatar/');
     }
 
-    public static function getDefaultFolderUserDoc(): \Illuminate\Foundation\Application|string|\Illuminate\Contracts\Routing\UrlGenerator|\Illuminate\Contracts\Foundation\Application
+    public static function getDefaultFolderUserDoc(): Application|string|UrlGenerator|\Illuminate\Contracts\Foundation\Application
     {
         return asset_url('employee-docs/');
     }
+
+    public static array $phoneArray = [" ", "-", "(", ")", "+"];
 }

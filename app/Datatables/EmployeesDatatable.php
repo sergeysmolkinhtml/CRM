@@ -2,27 +2,28 @@
 
 namespace App\Datatables;
 
-use App\Models\EmployeeStatus;
-use App\Position;
+use App\Models\Employee\EmployeeStatus;
+use App\Models\Position;
 use App\Models\Role;
-use App\Team;
+use App\Models\Team;
 use App\Tools\Tools;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTableAbstract;
+use Yajra\DataTables\Exceptions\Exception;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use function foo\func;
 
-class EmployeesDatatable extends BaseDatatable
+class EmployeesDatatable extends BaseDataTable
 {
     /**
      * Build DataTable class.
      *
-     * @param mixed $query Results from query() method.
+     * @param $query
      * @return DataTableAbstract
+     * @throws Exception
      */
     public function dataTable($query): DataTableAbstract
     {
@@ -31,7 +32,7 @@ class EmployeesDatatable extends BaseDatatable
             ->eloquent($query)
             ->addColumn('role', function ($row) use ($roles) {
                 $is_admin = $row->hasRole('admin');
-                if ($row->id != user()->id) {
+                if ($row->id != user()->id()) {
                     $status = '<div class="btn-group dropdown" onClick="getPos(event)">';
                     $status .= '<button aria-expanded="true" data-toggle="dropdown" class="btn ' . (($is_admin) ? 'btn-danger' : 'btn-info')
                         . ' dropdown-toggle waves-effect waves-light btn-xs" type="button">'
@@ -102,7 +103,7 @@ class EmployeesDatatable extends BaseDatatable
                     <ul role="menu" class="dropdown-menu pull-right">
                     <li><a href="' . route('admin.employees.edit', [$row->id]) . '"><i class="fa fa-pencil" aria-hidden="true"></i> ' . trans('app.edit') . '</a></li>
                   <li><a href="' . route('admin.employees.show', [$row->id]) . '"><i class="fa fa-search" aria-hidden="true"></i> ' . __('app.view') . '</a></li>';
-                if ($this->user->id !== $row->id) {
+                if ($this->user->id() !== $row->id) {
                     $action .= '<li><a href="javascript:;"  data-user-id="' . $row->id . '"  class="sa-params"><i class="fa fa-times" aria-hidden="true"></i> ' . trans('app.delete') . '</a></li>';
                 }
                 $action .= '</ul> </div>';
@@ -211,7 +212,7 @@ class EmployeesDatatable extends BaseDatatable
                 'users.image',
                 'users.status',
 
-                \DB::raw("(select roles.name from roles where roles.id =
+                DB::raw("(select roles.name from roles where roles.id =
             (select user_roles.role_id from role_user as user_roles
                     where user_roles.user_id = users.id ORDER BY user_roles.role_id DESC limit 1)
             limit 1) as `current_role_name`"),
@@ -285,7 +286,7 @@ class EmployeesDatatable extends BaseDatatable
 
                 $users = $users->where(function ($q) use ($request) {
                     $q->whereIn('roles.id', $request->role)
-                        ->orWhere(\DB::raw("(select roles.name from roles where roles.id =
+                        ->orWhere(DB::raw("(select roles.name from roles where roles.id =
             (select user_roles.role_id from role_user as user_roles
                     where user_roles.user_id = users.id ORDER BY user_roles.role_id DESC limit 1)
             limit 1)"), "employee")
@@ -429,4 +430,3 @@ class EmployeesDatatable extends BaseDatatable
         return $pdf->download($this->getFilename() . '.pdf');
     }
 }
-

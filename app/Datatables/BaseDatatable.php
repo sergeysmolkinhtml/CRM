@@ -2,7 +2,7 @@
 
 namespace App\Datatables;
 
-use App\Company;
+
 use Yajra\DataTables\Services\DataTable;
 
 class BaseDatatable extends DataTable
@@ -22,7 +22,7 @@ class BaseDatatable extends DataTable
         for ($i = 0; $i < $n; $i++)
         {
             // Converting space
-            // to underscor
+            // to underscore
             if ($str[$i] == ' ')
                 $str[$i] = '_';
             else
