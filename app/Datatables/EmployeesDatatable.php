@@ -383,7 +383,7 @@ class EmployeesDatatable extends BaseDataTable
      *
      * @return array
      */
-    protected function getColumns()
+    protected function getColumns(): array
     {
         return [
             __('app.id') => ['data' => 'id', 'name' => 'id', 'visible' => false, 'exportable' => false],

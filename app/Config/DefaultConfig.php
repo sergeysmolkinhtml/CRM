@@ -7,7 +7,7 @@ use Illuminate\Foundation\Application;
 
 class DefaultConfig
 {
-    public static string $nameProjectCompanyForEmployees = "Taseo";
+    public static string $nameProjectCompanyForEmployees = 'Taseo';
 
     public static string $configStatusNameHrForChangeEmployees = 'Hired';
     public static string $configStatusNameClientCandidateHired = 'Hired';
@@ -71,5 +71,23 @@ class DefaultConfig
         return asset_url('employee-docs/');
     }
 
-    public static array $phoneArray = [" ", "-", "(", ")", "+"];
+    public static array $phoneArray = [' ', '-', '(', ')', '+'];
+
+    public static function getTypesForDepartments() : array
+    {
+        return [
+            'all' => 'All',
+            'primary' => 'Primary',
+            'secondary' => 'Secondary',
+        ];
+    }
+
+    public static function getTypesForEducationExperience() : array
+    {
+        return [
+            'all' => 'All',
+            'experience' => 'Experience',
+            'education' => 'Education',
+        ];
+    }
 }

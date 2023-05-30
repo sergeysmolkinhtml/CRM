@@ -58,6 +58,17 @@ namespace App\Config{
 
 namespace App\Models{
 /**
+ * App\Models\Attendance
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Attendance query()
+ */
+	class Attendance extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\BaseModel
  *
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModel newModelQuery()
@@ -65,6 +76,25 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|BaseModel query()
  */
 	class BaseModel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\City
+ *
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|City newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City query()
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|City whereUpdatedAt($value)
+ */
+	class City extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -111,6 +141,19 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Company
+ *
+ * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
+ * @property-read int|null $notifications_count
+ * @method static \Illuminate\Database\Eloquent\Builder|Company newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Company query()
+ */
+	class Company extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Contact
  *
  * @property int $id
@@ -147,6 +190,85 @@ namespace App\Models{
 	class Contact extends \Eloquent {}
 }
 
+namespace App\Models{
+/**
+ * App\Models\Country
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $is_visible
+ * @property string $iso_alpha2
+ * @property string $iso_alpha3
+ * @property int $iso_numeric
+ * @property string $currency_code
+ * @property string $currency_name
+ * @property string $currency_symbol
+ * @property string $flag
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCurrencyCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCurrencyName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereCurrencySymbol($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereFlag($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereIsVisible($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereIsoAlpha2($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereIsoAlpha3($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereIsoNumeric($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Country whereUpdatedAt($value)
+ */
+	class Country extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Currency
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Currency query()
+ */
+	class Currency extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Designation
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Designation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Designation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Designation query()
+ */
+	class Designation extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EducationDegree
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EducationDegree newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EducationDegree newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EducationDegree query()
+ */
+	class EducationDegree extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EducationExperienceTag
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EducationExperienceTag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EducationExperienceTag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EducationExperienceTag query()
+ */
+	class EducationExperienceTag extends \Eloquent {}
+}
+
 namespace App\Models\Employee{
 /**
  * App\Models\Employee\Employee
@@ -157,6 +279,28 @@ namespace App\Models\Employee{
  * @method static \Illuminate\Database\Eloquent\Builder|Employee query()
  */
 	class Employee extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EmployeeArtist
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeArtist newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeArtist newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeArtist query()
+ */
+	class EmployeeArtist extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EmployeeContent
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeContent newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeContent newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeContent query()
+ */
+	class EmployeeContent extends \Eloquent {}
 }
 
 namespace App\Models\Employee{
@@ -234,6 +378,73 @@ namespace App\Models\Employee{
 
 namespace App\Models\Employee{
 /**
+ * App\Models\Employee\EmployeeDocs
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDocs newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDocs newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDocs query()
+ */
+	class EmployeeDocs extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EmployeeHrCorrespondence
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeHrCorrespondence newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeHrCorrespondence newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeHrCorrespondence query()
+ */
+	class EmployeeHrCorrespondence extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EmployeeLanguages
+ *
+ * @property int $id
+ * @property int|null $level_id
+ * @property int|null $lang_id
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages whereLangId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages whereLevelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeLanguages whereUserId($value)
+ */
+	class EmployeeLanguages extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EmployeeOffice
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeOffice newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeOffice newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeOffice query()
+ */
+	class EmployeeOffice extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EmployeeSkill
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeSkill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeSkill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeSkill query()
+ */
+	class EmployeeSkill extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
  * App\Models\Employee\EmployeeStatus
  *
  * @property int $id
@@ -251,6 +462,72 @@ namespace App\Models\Employee{
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeStatus whereUpdatedAt($value)
  */
 	class EmployeeStatus extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EmployeeTeam
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeTeam newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeTeam newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeTeam query()
+ */
+	class EmployeeTeam extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\EmployeeVideoEditing
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeVideoEditing newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeVideoEditing newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeVideoEditing query()
+ */
+	class EmployeeVideoEditing extends \Eloquent {}
+}
+
+namespace App\Models\Employee{
+/**
+ * App\Models\Employee\Responsibility
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Responsibility newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Responsibility newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Responsibility query()
+ */
+	class Responsibility extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\FileStorage
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorage newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorage newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|FileStorage query()
+ */
+	class FileStorage extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\HrDetails
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|HrDetails newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HrDetails newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HrDetails query()
+ */
+	class HrDetails extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\HrStatusCandidate
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|HrStatusCandidate newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HrStatusCandidate newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|HrStatusCandidate query()
+ */
+	class HrStatusCandidate extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -278,6 +555,82 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Interaction whereUpdatedAt($value)
  */
 	class Interaction extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\LangLevel
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|LangLevel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LangLevel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LangLevel query()
+ */
+	class LangLevel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Languages
+ *
+ * @property int $id
+ * @property string $name
+ * @property string|null $code
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Languages newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Languages newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Languages query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Languages whereCode($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Languages whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Languages whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Languages whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Languages whereUpdatedAt($value)
+ */
+	class Languages extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\LeadAgent
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|LeadAgent newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LeadAgent newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LeadAgent query()
+ */
+	class LeadAgent extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Leave
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Leave newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Leave newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Leave query()
+ */
+	class Leave extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\LeaveType
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|LeaveType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LeaveType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|LeaveType query()
+ */
+	class LeaveType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Position
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Position newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Position newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Position query()
+ */
+	class Position extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -324,6 +677,28 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\ProjectMember
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectMember newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectMember newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectMember query()
+ */
+	class ProjectMember extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\ProjectTimeLog
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTimeLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTimeLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ProjectTimeLog query()
+ */
+	class ProjectTimeLog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Purchasable
  *
  * @method static \Illuminate\Database\Eloquent\Builder|Purchasable newModelQuery()
@@ -331,6 +706,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Purchasable query()
  */
 	class Purchasable extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Region
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Region newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Region newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Region query()
+ */
+	class Region extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -357,6 +743,28 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Role withoutTrashed()
  */
 	class Role extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\RoleUser
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|RoleUser newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|RoleUser newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|RoleUser query()
+ */
+	class RoleUser extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Skill
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Skill query()
+ */
+	class Skill extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -430,6 +838,17 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Taskboard
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Taskboard newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Taskboard newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Taskboard query()
+ */
+	class Taskboard extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Team
  *
  * @property int $id
@@ -457,6 +876,17 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Team whereUserId($value)
  */
 	class Team extends \Eloquent {}
+}
+
+namespace App\Models\Tools{
+/**
+ * App\Models\Tools\UniversalSearch
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|UniversalSearch newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UniversalSearch newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UniversalSearch query()
+ */
+	class UniversalSearch extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -520,5 +950,16 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User withoutTrashed()
  */
 	class User extends \Eloquent implements \Illuminate\Contracts\Auth\MustVerifyEmail {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\UserActivity
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|UserActivity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserActivity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|UserActivity query()
+ */
+	class UserActivity extends \Eloquent {}
 }
 

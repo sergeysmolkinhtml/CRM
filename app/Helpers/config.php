@@ -1,5 +1,6 @@
 <?php
 
+use App\Config\StorageSettings;
 use App\Models\Company;
 use Illuminate\Support\Str;
 
@@ -95,5 +96,18 @@ if (!function_exists('asset_url')) {
             return session('company_setting');
         }
     }
+
+    if (!function_exists('storage_setting')) {
+
+        function storage_setting()
+        {
+            if (!session()->has('storage_setting')) {
+                session(['storage_setting' => StorageSettings::where('status', 'enabled')
+                    ->first()]);
+            }
+            return session('storage_setting');
+        }
+    }
+
 
 }

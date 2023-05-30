@@ -7,7 +7,7 @@ use Yajra\DataTables\Services\DataTable;
 
 class BaseDatatable extends DataTable
 {
-    protected $global;
+    protected mixed $global;
 
     public function __construct()
     {

@@ -3,11 +3,11 @@
 namespace App\Services\Employees;
 
 use App\Config\DefaultConfig;
-use App\DataTransferObjects\Employee\EmployeeArtistDTO;//
-use App\DataTransferObjects\Employee\EmployeeContentDTO;//
-use App\DataTransferObjects\Employee\EmployeeDetailsDTO;//
-use App\DataTransferObjects\Employee\EmployeeVideoEditingDTO;//
-use App\DataTransferObjects\HR\HrDTO;//
+use App\DataTransferObjects\Employee\EmployeeArtistDTO;
+use App\DataTransferObjects\Employee\EmployeeContentDTO;
+use App\DataTransferObjects\Employee\EmployeeDetailsDTO;
+use App\DataTransferObjects\Employee\EmployeeVideoEditingDTO;
+use App\DataTransferObjects\HR\HrDTO;
 use App\Helpers\Files;
 use App\Models\City;
 use App\Models\Country;
@@ -23,10 +23,10 @@ use App\Models\Employee\EmployeeHrCorrespondence;
 use App\Models\Employee\EmployeeLanguages;
 use App\Models\Employee\EmployeeOffice;
 use App\Models\Employee\EmployeeSkill;
+use App\Models\Employee\EmployeeStatus;
 use App\Models\Employee\EmployeeTeam;
 use App\Models\Employee\EmployeeVideoEditing;
 use App\Models\Employee\Responsibility;
-use App\Models\Employee\EmployeeStatus;
 use App\Models\HrDetails;
 use App\Models\HrStatusCandidate;
 use App\Models\LangLevel;
@@ -69,7 +69,8 @@ use Illuminate\Support\Facades\Storage;
 
 class EmployeesServices extends ServiceBase
 {
-    use InteractsWithInput, ActivityInTextTrait;
+    use ActivityInTextTrait;
+    use InteractsWithInput;
 
     private EmployeesRepositoryInterface $employeesRepository;
     private AddressRepositoryInterface $addressRepository;
@@ -423,7 +424,7 @@ class EmployeesServices extends ServiceBase
 
         $request["project_company_id"] = $projectCompany->id;
 
-        $this->employee = $this->employeesRepository->createDTO(EmployeesDetailsDTo::getArray($request->all()));
+        $this->employee = $this->employeesRepository->createDTO(EmployeeDetailsDTO::getArray($request->all()));
 
         if ($request['responsibilities']) {
             $this->employee->responsibilities()->sync($request["responsibilities"]);
@@ -431,7 +432,7 @@ class EmployeesServices extends ServiceBase
 
         $this->employeeArtistRepository->create(EmployeeArtistDTO::getArray($request->all(), $this->employee->id));
         $this->employeeContentRepository->create(EmployeeContentDTO::getArray($request->all(), $this->employee->id));
-        $this->editingRepository->create(EmployeesVideoEditingDTo::getArray($request->all(), $this->employee->id));
+        $this->editingRepository->create(EmployeeVideoEditingDTO::getArray($request->all(), $this->employee->id));
 
         $this->employeesRepository->createOrUpdateEmployeesSkills($data);
 
@@ -528,7 +529,7 @@ class EmployeesServices extends ServiceBase
 
 
         if (!$this->employeeDetail)
-            $this->employeeDetail = $this->employeesRepository->createDTO(EmployeesDetailsDTo::getArray(["user_id" => $this->employee->id]));
+            $this->employeeDetail = $this->employeesRepository->createDTO(EmployeeDetailsDTO::getArray(["user_id" => $this->employee->id]));
 
 
         $projectCompany = DefaultConfig::getProjectCompanyForEmployees();
@@ -626,7 +627,7 @@ class EmployeesServices extends ServiceBase
         $projectCompany = DefaultConfig::getProjectCompanyForEmployees();
 
         if (!$this->employeeDetail)
-            $this->employeeDetail = $this->employeesRepository->createDTO(EmployeesDetailsDTo::getArray(["user_id" => $this->userDetail->id]));
+            $this->employeeDetail = $this->employeesRepository->createDTO(EmployeeDetailsDTO::getArray(["user_id" => $this->userDetail->id]));
 
         $this->videoEditing = EmployeeVideoEditing::where("employee_details_id", $this->employeeDetail->id)
             ->where("project_company_id", $projectCompany->id)->first();
@@ -682,7 +683,7 @@ class EmployeesServices extends ServiceBase
         if ($address['status'] == true)
             $request['address_id'] = $address['data']['original']['id'] ?? $address['data']['changed']['id'];
 
-        $employee = $this->employeesRepository->updateDTO(null, $id, EmployeesDetailsDTo::getArray($request->all()));
+        $employee = $this->employeesRepository->updateDTO(null, $id, EmployeeDetailsDTO::getArray($request->all()));
 
         if ($request['responsibilities']) {
             $employee->responsibilities()->sync($request["responsibilities"]);
@@ -737,7 +738,7 @@ class EmployeesServices extends ServiceBase
         $this->employeeArtistRepository->update($employeeArtist ? $employeeArtist->id : null, null, EmployeesArtistDTo::getArray($request->all(), $employee->id));
 
         $employeeContent = $this->employeeContentRepository->findByProject($employee->id, $projectCompany->id);
-        $this->employeeContentRepository->update($employeeContent ? $employeeContent->id : null, null, EmployeesContentDTo::getArray($request->all(), $employee->id));
+        $this->employeeContentRepository->update($employeeContent ? $employeeContent->id : null, null, EmployeeContentDTO::getArray($request->all(), $employee->id));
 
         $videoEditing = $this->editingRepository->findByProject($employee->id, $projectCompany->id);
         $this->editingRepository->update($videoEditing ? $videoEditing->id : null, null, EmployeesVideoEditingDTo::getArray($request->all(), $employee->id));
@@ -910,7 +911,7 @@ class EmployeesServices extends ServiceBase
             $empl = EmployeeDetails::where("user_id", $data['user_id'])->first();
             $data['last_date'] = $empl->joining_date;
         }
-        $employee = $this->employeesRepository->updateDTO(null, $data['user_id'], EmployeesDetailsDTo::getArray($data));
+        $employee = $this->employeesRepository->updateDTO(null, $data['user_id'], EmployeeDetailsDTO::getArray($data));
 
 
         if ($employee->candidate) {
@@ -949,7 +950,7 @@ class EmployeesServices extends ServiceBase
 //        dd($data);
 //
 //        $this->employeesRepository->updateUserProfile($data);
-        $this->employeesRepository->updateDTO(null, $data['user_id'], EmployeesDetailsDTo::getArray($request->all()));
+        $this->employeesRepository->updateDTO(null, $data['user_id'], EmployeeDetailsDTO::getArray($request->all()));
 
 
         $statusEmpl = EmployeeStatus::findOrFail($request->statusEmpl);
