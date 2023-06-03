@@ -64,6 +64,8 @@ Route::group(['middleware' => ['auth', 'termsAccepted', 'role:admin'], 'prefix' 
     Route::resource('employees', ManageEmployeesController::class);
     Route::get('get-employees-list', [ManageEmployeesController::class,'getData'])->name('employees.getData');
 
+
+
     Route::get('token', function () {
         return auth()->user()->createToken('crm')->plainTextToken;
     });

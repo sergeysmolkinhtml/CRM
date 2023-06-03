@@ -7,7 +7,7 @@ use App\Scopes\CompanyScope;
 
 trait CompanyObserverTrait
 {
-    protected static function boot()
+    protected static function boot() : void
     {
         parent::boot();
 
@@ -16,7 +16,7 @@ trait CompanyObserverTrait
                 $model->company_id = company()->id;
         });
 
-        static::addGlobalScope(new CompanyScope);
+        static::addGlobalScope(new CompanyScope());
     }
 
 }

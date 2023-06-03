@@ -11,33 +11,30 @@
 
     <div class="card">
         <div class="card-header">Users list</div>
+        <div class="input-group rounded p-2">
+            <form class="form-inline my-2 my-lg-0" action="{{route('user.search')}}" method="get" type="get">
+                <input type="search"
+                       class="form-control rounded"
+                       placeholder="Search"
+                       name="userSearch"
+                       aria-label="Search"
+                       aria-describedby="search-addon"/>
+                <button class="input-group-text border-0" id="search-addon">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
 
-        <div class="card-body">
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end p-2">
                 <form action="{{ route('admin.users.index') }}" method="GET">
                     <div class="form-group">
                         <label for="deleted" class="col-form-label">Show deleted:</label>
-                            <select class="form-control" name="deleted" id="deleted" onchange="this.form.submit()">
-                                <option value="false" {{ request('deleted') == 'false' ? 'selected' : '' }}>No</option>
-                                <option value="true" {{ request('deleted') == 'true' ? 'selected' : '' }}>Yes</option>
-                            </select>
+                        <select class="form-control" name="deleted" id="deleted" onchange="this.form.submit()">
+                            <option value="false" {{ request('deleted') == 'false' ? 'selected' : '' }}>No</option>
+                            <option value="true" {{ request('deleted') == 'true' ? 'selected' : '' }}>Yes</option>
+                        </select>
                     </div>
                 </form>
-
-            </div>
-            <div class="input-group rounded">
-                <form class="form-inline my-2 my-lg-0" action="{{route('user.search')}}" method="get" type="get">
-                    <input type="search"
-                           class="form-control rounded"
-                           placeholder="Search"
-                           name="userSearch"
-                           aria-label="Search"
-                           aria-describedby="search-addon"/>
-                    <button class="input-group-text border-0" id="search-addon">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
+        </div>
 
             <table class="table table-responsive-sm table-striped">
                 <thead>
