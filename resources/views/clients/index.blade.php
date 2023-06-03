@@ -18,7 +18,19 @@
                     {{ session('status') }}
                 </div>
             @endif
-
+                <div class="input-group rounded mb-3">
+                    <form class="form-inline my-2 my-lg-0" action="{{route('admin.clients.index')}}" method="get" type="get">
+                        <input type="search"
+                               class="form-control rounded"
+                               placeholder="Search"
+                               name="clientSearch"
+                               aria-label="Search"
+                               aria-describedby="search-addon"/>
+                        <button class="input-group-text border-0" id="search-addon">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
             <table class="table table-responsive-sm table-striped">
                 <thead>
                 <tr>
@@ -51,7 +63,7 @@
                 </tbody>
             </table>
 
-            {{ $clients->withQueryString()->links() }}
+            {{--{{ $clients->withQueryString()->links() }}--}}
         </div>
     </div>
 

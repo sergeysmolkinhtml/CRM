@@ -8,15 +8,20 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
+use function JmesPath\search;
 
 class ClientController extends Controller
 {
-    const CREATED = 'created';
-    const UPDATED_ASSIGN = 'updated_assign';
+    public const CREATED = 'created';
+    public const UPDATED_ASSIGN = 'updated_assign';
 
     public function index()
     {
-        $clients = Client::paginate(20);
+        $clients = Client::all();
+
+        if($searchInput  = request()->input('clientSearch')){
+            $clients = Client::search($searchInput)->get();
+        }
 
         return view('clients.index', compact('clients'));
     }

@@ -19,6 +19,7 @@ class UserController extends Controller
             $withDeleted = true;
         }
 
+
         $users = Cache::remember('users-list', 60*60*24, function () use ($withDeleted) {
            return User::with('roles')
                 ->when($withDeleted, function ($query) {

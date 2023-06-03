@@ -6,13 +6,16 @@ use App\Events\ClientAction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Scout\Attributes\SearchUsingPrefix;
+use Laravel\Scout\Searchable;
 
 class Client extends Model
 {
     use HasFactory;
+    use Searchable;
 
-    const CREATED = 'created';
-    const UPDATED_ASSIGN = 'updated_assign';
+    public const CREATED = 'created';
+    public const UPDATED_ASSIGN = 'updated_assign';
 
     protected $fillable = [
         'contact_name',
@@ -56,5 +59,20 @@ class Client extends Model
     public function getprimaryContactAttribute()
     {
         return $this->hasMany(Contact::class)->whereIsPrimary(true)->first();
+    }
+
+
+    public function toSearchableArray() : array
+    {
+        return [
+            'contact_name'          =>$this->contact_name,
+            'contact_email'         =>$this->contact_email,
+            'contact_phone_number'  =>$this->contact_phone_number,
+            'company_name'          =>$this->company_name,
+            'company_address'       =>$this->company_address,
+            'company_city'          =>$this->company_city,
+            'company_zip'           =>$this->company_zip,
+            'company_vat'           =>$this->company_vat,
+        ];
     }
 }
