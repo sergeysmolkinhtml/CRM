@@ -12,7 +12,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia, Filter;
+    use Filter;
+    use HasFactory;
+    use InteractsWithMedia;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',

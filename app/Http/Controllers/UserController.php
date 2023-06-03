@@ -24,8 +24,8 @@ class UserController extends Controller
            return User::with('roles')
                 ->when($withDeleted, function ($query) {
                     $query->withTrashed();
-                    }
-                )->paginate(20);
+                })
+               ->paginate(20);
            });
 
         return view('users.index', compact('users', 'withDeleted'));

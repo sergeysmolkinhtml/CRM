@@ -11,9 +11,22 @@
         <div class="card-header">Contact information</div>
 
         <div class="card-body">
-            <img class="rounded mx-auto ms-10"
-                 src="https://img.mercedes-benz-kiev.com/data/purchase/amg-gt-coupe/0952611142/mercedes-amg-gt-r-1.jpg"
-                 alt="..." height="290" width="260">
+            <div class="float-left">
+                <img class="rounded mx-auto ms-10"
+                     src="https://img.mercedes-benz-kiev.com/data/purchase/amg-gt-coupe/0952611142/mercedes-amg-gt-r-1.jpg"
+                     alt="..." height="290" width="260">
+            </div>
+            <div class="mx-auto text-center">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Title</h5>
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" class="btn btn-primary">Go</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            @include('profile.partials.details-bar')
             <form action="{{ route('admin.profile.update') }}" method="POST">
                 @csrf
                 <div class="col-md-2">
@@ -64,6 +77,7 @@
                     <span class="help-block"> </span>
                 </div>
                 </div>
+
                 <button class="btn btn-primary" type="submit">
                     Save
                 </button>
