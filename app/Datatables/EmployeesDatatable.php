@@ -16,7 +16,7 @@ use Yajra\DataTables\Exceptions\Exception;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 
-class EmployeesDatatable extends BaseDataTable
+class EmployeesDatatable extends BaseDatatable
 {
     /**
      * Build DataTable class.

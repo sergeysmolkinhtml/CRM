@@ -23,6 +23,20 @@
                             </select>
                     </div>
                 </form>
+
+            </div>
+            <div class="input-group rounded">
+                <form class="form-inline my-2 my-lg-0" action="{{route('user.search')}}" method="get" type="get">
+                    <input type="search"
+                           class="form-control rounded"
+                           placeholder="Search"
+                           name="userSearch"
+                           aria-label="Search"
+                           aria-describedby="search-addon"/>
+                    <button class="input-group-text border-0" id="search-addon">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
             </div>
 
             <table class="table table-responsive-sm table-striped">

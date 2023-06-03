@@ -71,5 +71,7 @@ Route::group(['middleware' => ['auth', 'termsAccepted', 'role:admin'], 'prefix' 
 
 });
 
+Route::get('userSearch',[UserController::class, 'search'])->name('user.search');
+
 Route::get('terms', [TermsController::class, 'index'])->middleware('auth')->name('terms.index');
 Route::post('terms', [TermsController::class, 'store'])->middleware('auth')->name('terms.store');

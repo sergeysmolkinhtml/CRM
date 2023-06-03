@@ -188,7 +188,7 @@ return [
          */
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

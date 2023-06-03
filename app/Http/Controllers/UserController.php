@@ -7,6 +7,7 @@ use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Request;
 
 class UserController extends Controller
 {
@@ -59,5 +60,13 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('admin.users.index');
+    }
+
+    public function search()
+    {
+        $inputText = request()->input('userSearch');
+        $users = User::where('first_name','LIKE', '%'. $inputText . '%')->get();
+
+        return view('users.partials.search',compact('users'));
     }
 }
