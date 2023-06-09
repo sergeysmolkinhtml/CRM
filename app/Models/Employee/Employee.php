@@ -8,10 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Employee extends Model
 {
-    protected $table = 'employees';
+    protected $table = 'employee';
 
-    protected $searchableFields = ['company_name', 'vat', 'address'];
-
+    protected array $searchableFields = [
+        'company_name',
+        'vat',
+        'address'
+    ];
 
     protected $fillable = [
         'external_id',
@@ -30,11 +33,10 @@ class Employee extends Model
         'client_number'
     ];
 
-    public function user(): BelongsTo
+    public function user() : BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class);
     }
-
 
 
 }

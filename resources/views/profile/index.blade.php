@@ -26,7 +26,6 @@
                 </div>
             </div>
             <hr>
-            @include('profile.partials.details-bar')
             <form action="{{ route('admin.profile.update') }}" method="POST">
                 @csrf
                 <div class="col-md-2">
@@ -45,8 +44,8 @@
                     </div>
 
                     <div class="form-group">
-                    <label class="required" for="last_name">Last name</label>
-                    <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" type="text" name="last_name" id="last_name" value="{{ old('last_name', auth()->user()->last_name) }}" required>
+                        <label class="required" for="last_name">Last name</label>
+                        <input class="form-control {{ $errors->has('last_name') ? 'is-invalid' : '' }}" type="text" name="last_name" id="last_name" value="{{ old('last_name', auth()->user()->last_name) }}" required>
                     @if($errors->has('last_name'))
                         <div class="invalid-feedback">
                             {{ $errors->first('last_name') }}
@@ -76,9 +75,10 @@
                     @endif
                     <span class="help-block"> </span>
                 </div>
+                    @include('profile.partials.details-bar')
                 </div>
 
-                <button class="btn btn-primary" type="submit">
+                <button class="btn btn-primary " type="submit">
                     Save
                 </button>
             </form>

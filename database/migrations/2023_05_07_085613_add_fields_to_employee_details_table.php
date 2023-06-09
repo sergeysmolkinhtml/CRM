@@ -159,34 +159,6 @@ class AddFieldsToEmployeeDetailsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('employees_portfolio');
-
-        Schema::table('employee_details', function (Blueprint $table) {
-            $table->dropForeign('employee_details_address_id_foreign');
-            $table->dropColumn('address_id');
-            $table->dropForeign('employee_details_office_id_foreign');
-            $table->dropColumn('office_id');
-            $table->dropForeign('employee_details_status_id_foreign');
-            $table->dropColumn('status_id');
-            $table->dropForeign('employee_details_city_id_foreign');
-            $table->dropColumn('city_id');
-            $table->dropColumn('viber');
-            $table->dropColumn('telegram');
-            $table->dropColumn('whatsapp');
-            $table->dropColumn('facebook');
-            $table->dropColumn('linkedin');
-            $table->dropColumn('skype');
-            $table->dropColumn('work_email');
-            $table->dropColumn('mobile_work_email');
-            $table->dropColumn('work_hemail');
-            $table->dropColumn('video');
-            $table->dropColumn('pt_ft');
-            $table->dropColumn('name_eng');
-            $table->dropColumn('birthday');
-            $table->dropColumn('start_position');
-            $table->dropColumn('resume_url');
-            $table->dropColumn('photo_url');
-        });
-
         Schema::dropIfExists('employees_statuses');
         Schema::dropIfExists('empl_languages');
         Schema::dropIfExists('languages');
@@ -194,5 +166,7 @@ class AddFieldsToEmployeeDetailsTable extends Migration
         Schema::dropIfExists('offices');
         Schema::dropIfExists('addresses');
         Schema::dropIfExists('cities');
+
     }
+
 }

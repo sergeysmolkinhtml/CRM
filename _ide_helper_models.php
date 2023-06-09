@@ -340,38 +340,38 @@ namespace App\Models\Employee{
  * @property-read int|null $interactions_count
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails query()
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereAddress($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereAddressId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereBirthday($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereCityId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereEmployeeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereFacebook($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereHourlyRate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereJobTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereLinkedin($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereMobileWorkEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereNameEng($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereOfficeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails wherePhotoUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails wherePtFt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereResumeUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereSkype($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereSlackUsername($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereStartPosition($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereStatusId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereTelegram($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereViber($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereVideo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereWhatsapp($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereWorkEmail($value)
- * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetails whereWorkHemail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereAddressId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereBirthday($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereCityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereEmployeeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereFacebook($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereHourlyRate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereJobTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereLinkedin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereMobileWorkEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereNameEng($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereOfficeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail wherePhotoUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail wherePtFt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereResumeUrl($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereSkype($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereSlackUsername($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereStartPosition($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereStatusId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereTelegram($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereViber($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereVideo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereWhatsapp($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereWorkEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EmployeeDetail whereWorkHemail($value)
  */
 	class EmployeeDetails extends \Eloquent {}
 }
@@ -451,7 +451,7 @@ namespace App\Models\Employee{
  * @property string $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Employee\EmployeeDetails> $user
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Employee\EmployeeDetail> $user
  * @property-read int|null $user_count
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeStatus newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|EmployeeStatus newQuery()
@@ -541,7 +541,7 @@ namespace App\Models{
  * @property string $datetime
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\Models\Employee\EmployeeDetails|null $employee
+ * @property-read \App\Models\Employee\EmployeeDetail|null $employee
  * @property-read \App\Models\User $user
  * @method static \Illuminate\Database\Eloquent\Builder|Interaction newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Interaction newQuery()

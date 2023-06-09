@@ -5,7 +5,7 @@ namespace App\Http\Requests\Admin\Employee;
 
 use App\Config\DefaultConfig;
 use App\Models\Country;
-use App\Models\Employee\EmployeeDetails;
+use App\Models\Employee\EmployeeDetail;
 use App\Models\Employee\EmployeeStatus;
 use App\HrSource;
 use App\Http\Requests\CoreRequest;
@@ -114,10 +114,10 @@ class EmployeeRequest extends CoreRequest
 
             case 'PUT':
 
-                $detailID = EmployeeDetails::where('user_id', $this->route('employee'))->first();
+                $detailID = EmployeeDetail::where('user_id', $this->route('employee'))->first();
 
                 if (! $detailID) {
-                    $detailID = new EmployeeDetails();
+                    $detailID = new EmployeeDetail();
                     $detailID->user_id = $this->route('employee');
                     $detailID->save();
                 }

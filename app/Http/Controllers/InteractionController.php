@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Employee\EmployeeDetails;
+use App\Models\Employee\EmployeeDetail;
 use App\Models\Interaction;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -15,7 +15,7 @@ class InteractionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(EmployeeDetails $employee): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function index(EmployeeDetail $employee): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
         $interactions = $employee->interactions()->orderBy('datetime', 'desc')->get();
 

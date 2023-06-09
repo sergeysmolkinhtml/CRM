@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Employee\EmployeeDetails;
+use App\Models\Employee\EmployeeDetail;
 use App\Scopes\CompanyScope;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,11 +15,8 @@ return new class extends Migration
     {
         Schema::create('employee_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
-                ->references('id')
-                ->on('users')
-                ->cascadeOnDelete();
-            $table->string('employee_id')->nullable()->unique()->default(null);
+
+            $table->integer('employee_id')->nullable()->unique()->default(null);
             $table->string('job_title');
             $table->text('address')->nullable();
             $table->integer('hourly_rate')->nullable();

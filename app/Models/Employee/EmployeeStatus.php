@@ -21,7 +21,7 @@ class EmployeeStatus extends Model
      */
     public function user()
     {
-        return $this->hasMany(EmployeeDetails::class, 'status_id');
+        return $this->hasMany(EmployeeDetail::class, 'status_id');
     }
 
     public static function getAllShort()

@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Config\DefaultConfig;
-use App\Models\Employee\EmployeeDetails;
+use App\Models\Employee\EmployeeDetail;
 use App\Models\Employee\EmployeeStatus;
 use App\Position;
 use Carbon\Carbon;
@@ -14,7 +14,7 @@ class EmployeeDetailObserver
     /**
      * Handle the EmployeeDetails "created" event.
      */
-    public function created(EmployeeDetails $employeeDetails): void
+    public function created(EmployeeDetail $employeeDetails): void
     {
         //
     }
@@ -22,7 +22,7 @@ class EmployeeDetailObserver
     /**
      * Handle the EmployeeDetails "updated" event.
      */
-    public function updated(EmployeeDetails $detail): void
+    public function updated(EmployeeDetail $detail): void
     {
         if ($detail->isDirty(['status_id'])) {
 
@@ -101,7 +101,7 @@ class EmployeeDetailObserver
     /**
      * Handle the EmployeeDetails "deleted" event.
      */
-    public function deleted(EmployeeDetails $employeeDetails): void
+    public function deleted(EmployeeDetail $employeeDetails): void
     {
         //
     }
@@ -109,7 +109,7 @@ class EmployeeDetailObserver
     /**
      * Handle the EmployeeDetails "restored" event.
      */
-    public function restored(EmployeeDetails $employeeDetails): void
+    public function restored(EmployeeDetail $employeeDetails): void
     {
         //
     }
@@ -117,7 +117,7 @@ class EmployeeDetailObserver
     /**
      * Handle the EmployeeDetails "force deleted" event.
      */
-    public function forceDeleted(EmployeeDetails $employeeDetails): void
+    public function forceDeleted(EmployeeDetail $employeeDetails): void
     {
         //
     }

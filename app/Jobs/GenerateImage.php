@@ -17,14 +17,14 @@ class GenerateImage implements ShouldQueue
      *
      * @var int
      */
-    public $tries = 5;
+    public int $tries = 5;
 
     /**
      * The image that should have thumbnails generated.
      *
      * @var \App\Models\Image
      */
-    public $image;
+    public \App\Models\Image | Image $image;
 
     /**
      * Create a new job instance.
@@ -41,7 +41,7 @@ class GenerateImage implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle() : void
     {
         $generator = ImageGenerator::make(Storage::get('images/' . $this->image->getResourceName()));
 

@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Employee;
 use App\Models\Task;
 use App\Models\Client;
 use App\Models\Project;

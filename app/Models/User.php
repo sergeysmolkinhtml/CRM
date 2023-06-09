@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Employee\Employee;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -76,9 +78,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Team::class);
     }
 
+    public function employee() : HasOne
+    {
+        return $this->hasOne(Employee::class);
+    }
+
     public static function getUserTasksCount()
     {
-        return User::selectRaw('users.id, COUNT(tasks.id) as task_count')
+        return User::query()->selectRaw('users.id, COUNT(tasks.id) as task_count')
             ->leftJoin('tasks', 'users.id', '=', 'tasks.user_id')
             ->groupByRaw('users.id')
             ->get();

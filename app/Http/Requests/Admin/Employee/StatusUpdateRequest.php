@@ -3,7 +3,7 @@
 
 namespace App\Http\Requests\Admin\Employee;
 
-use App\Models\Employee\EmployeeDetails;
+use App\Models\Employee\EmployeeDetail;
 use App\Tools\Tools;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
@@ -29,7 +29,7 @@ class StatusUpdateRequest extends FormRequest
     {
         return [
             "last_date" => ["required", function ($key, $value, $fail) {
-                $empDetail = EmployeeDetails::select('joining_date')->where('user_id', $this->id)->first();
+                $empDetail = EmployeeDetail::select('joining_date')->where('user_id', $this->id)->first();
 
                 if ($empDetail) {
                     if (Carbon::parse($empDetail->joining_date)->gte($value)) {

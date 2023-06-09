@@ -8,9 +8,10 @@ use App\Traits\CustomFieldsTrait;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
-class EmployeeDetails extends BaseModel
+class EmployeeDetail extends BaseModel
 {
-    use CustomFieldsTrait, Notifiable;
+    use CustomFieldsTrait;
+    use Notifiable;
 
     protected $table = 'employee_details';
 
@@ -18,4 +19,6 @@ class EmployeeDetails extends BaseModel
     {
         return $this->hasMany(Interaction::class);
     }
+
+
 }
