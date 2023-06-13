@@ -70,7 +70,7 @@ class Tools
         ];
     }
 
-    public static function getRoleVideoEditor()
+    public static function getRoleVideoEditor() : array
     {
         return [
             __('app.roleEmployee.videoEditor')
@@ -129,7 +129,7 @@ class Tools
         return Carbon::hasFormat($datetime, 'Y-m-d H:i:s') ? $datetime : Carbon::createFromFormat(company_setting()->date_format . ' ' . company_setting()->time_format, $datetime)->format('Y-m-d H:i:s');
     }
 
-    public static function checkEmptuValueInKey($data, $exception = [])
+    public static function checkEmptuValueInKey($data, $exception = []) : bool
     {
         $result = true;
         foreach ($data as $k => $v) {

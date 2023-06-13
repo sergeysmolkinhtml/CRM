@@ -64,6 +64,16 @@
                     @endif
                     <span class="help-block"> </span>
                 </div>
+                    <div class="form-group">
+                        <label class="required" for="workExperience">Work Experience</label>
+                        <input class="form-control {{ $errors->has('workExperience') ? 'is-invalid' : '' }}" type="text" name="workExperience" id="workExperience" value="{{ old('workExperience', auth()->user()->workExperience ) }}" required>
+                        @if($errors->has('workExperience'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('workExperience') }}
+                            </div>
+                        @endif
+                        <span class="help-block"> </span>
+                    </div>
 
                 <div class="form-group">
                     <label class="required" for="phone_number">Phone number</label>
@@ -78,7 +88,7 @@
                     @include('profile.partials.details-bar')
                 </div>
 
-                <button class="btn btn-primary " type="submit">
+                <button class="btn btn-primary" type="submit">
                     Save
                 </button>
             </form>

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use App\Models\Task;
 use App\Models\Client;
 use App\Models\Project;
@@ -38,5 +39,8 @@ class TaskFactory extends Factory
             'deadline' => $this->faker->dateTimeBetween('+1 month', '+6 month'),
             'status' => Arr::random(Task::STATUS),
         ];
+        $this->afterCreating(Task::class, function ($row){
+            $row->categories()->attach(Category::inRandomOrder()->first()->id());
+        });
     }
 }

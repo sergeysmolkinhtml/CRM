@@ -6,6 +6,7 @@ use App\Events\TaskCreated;
 use App\Traits\Filter;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -14,7 +15,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Task extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes, InteractsWithMedia, Filter;
+    use Filter;
+    use HasFactory;
+    use InteractsWithMedia;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -69,6 +73,22 @@ class Task extends Model implements HasMedia
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function categories() : BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function getCategoriesLinksAttribute() : string
+    {
+        $categories = $this->categories()->get()->map(function($category) {
+            return '<a href="'.route('admin.task.index').'?category_id='.$category->id.'">'.$category->name.'</a>';
+        })->implode(' | ');
+
+        if ($categories == '') return 'none';
+
+        return $categories;
     }
 
     public function getSearchableFields(): array

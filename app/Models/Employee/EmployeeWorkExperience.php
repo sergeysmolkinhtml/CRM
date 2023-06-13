@@ -39,7 +39,7 @@ class EmployeeWorkExperience extends Model
         return $this->belongsToMany(EducationExperienceTag::class, 'work_experience_tags', 'work_experience_id', 'tag_id');
     }
 
-    public function responsibilities_tags()
+    public function responsibilities_tags() : BelongsToMany
     {
         return $this->belongsToMany(Responsibility::class, 'work_exper_responsibilities', 'exper_id', 'response_id');
     }

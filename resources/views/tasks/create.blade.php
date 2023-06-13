@@ -57,6 +57,23 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="categories">Categories
+                        @foreach ($categories as $category)
+                            <label>
+                                <input multiple type="checkbox" name="categories[]" value="{{ $category->id }}"> {{ $category->name }}</input>
+                            </label>
+                            <br />
+                        @endforeach
+                    </label>
+                    @if($errors->has('client_id'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('client_id') }}
+                        </div>
+                    @endif
+                    <span class="help-block"> </span>
+                </div>
+
+                <div class="form-group">
                     <label for="client_id">Assigned client</label>
                     <select class="form-control {{ $errors->has('client_id') ? 'is-invalid' : '' }}" name="client_id" id="client_id" required>
                         @foreach($clients as $id => $entry)

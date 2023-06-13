@@ -13,7 +13,7 @@ class TaskAssigned extends Notification
 {
     use Queueable;
 
-    public $task;
+    public Task $task;
 
     public function __construct(Task $task)
     {

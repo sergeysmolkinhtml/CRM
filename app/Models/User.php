@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Employee\Employee;
+use App\Models\Employee\EmployeeWorkExperience;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -81,6 +82,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function employee() : HasOne
     {
         return $this->hasOne(Employee::class);
+    }
+
+    public function workExperience() : HasMany
+    {
+        return $this->hasMany(EmployeeWorkExperience::class, 'user_id');
     }
 
     public static function getUserTasksCount()

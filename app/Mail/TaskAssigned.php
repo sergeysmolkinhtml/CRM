@@ -10,7 +10,8 @@ use Illuminate\Queue\SerializesModels;
 
 class TaskAssigned extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * @var Task
@@ -32,7 +33,7 @@ class TaskAssigned extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build() : static
     {
         return $this->markdown('emails.task.assigned', [
             'title' => $this->task->title,

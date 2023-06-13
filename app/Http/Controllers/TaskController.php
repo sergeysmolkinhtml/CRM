@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\TaskCreated;
+use App\Models\Category;
 use App\Models\Employee;
 use App\Models\Task;
 use App\Models\Client;
@@ -21,7 +22,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::with(['user', 'client', 'project'])->filterStatus(request('status'))->paginate(20);
+        $tasks = Task::with(['user', 'client', 'project', 'categories'])->filterStatus(request('status'))->paginate(20);
 
         return view('tasks.index', compact('tasks'));
     }
@@ -31,28 +32,31 @@ class TaskController extends Controller
         $users = User::all()->pluck('full_name', 'id');
         $clients = Client::all()->pluck('company_name', 'id');
         $projects = Project::all()->pluck('title', 'id');
+        $categories = Category::orderBy('name')->get();
 
-        return view('tasks.create', compact('users', 'clients', 'projects'));
+        return view('tasks.create', compact('users', 'clients', 'projects','categories'));
     }
 
     public function store(CreateTaskRequest $request): RedirectResponse
     {
         $task = Task::create($request->validated());
 
+        $task->categories()->sync($request->input('categories', []));
+
         $user = User::find($request->user_id);
 
-        $user->notify(new TaskAssigned($task));
+        //$user->notify(new TaskAssigned($task));
 
-        event(new TaskCreated($task));
+        //event(new TaskCreated($task));
 
-        Mail::to($user)->send(new MailTaskAssigned($task));
+        //Mail::to($user)->send(new MailTaskAssigned($task));
 
         return redirect()->route('admin.tasks.index');
     }
 
     public function show(Task $task)
     {
-        $task->load('user', 'client');
+        $task->load('user', 'client', 'categories');
 
         return view('tasks.show', compact('task'));
     }
@@ -62,7 +66,7 @@ class TaskController extends Controller
         $users = User::all()->pluck('full_name', 'id');
         $clients = Client::all()->pluck('company_name', 'id');
         $projects = Project::all()->pluck('title', 'id');
-
+        $task->load('categories');
         return view('tasks.edit', compact('task', 'users', 'clients', 'projects'));
     }
 
@@ -77,7 +81,7 @@ class TaskController extends Controller
         }
 
         $task->update($request->validated());
-
+        $task->categories()->sync($request->input('categories', []));
         return redirect()->route('admin.tasks.index');
     }
 

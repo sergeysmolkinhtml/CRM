@@ -1,19 +1,20 @@
 <?php
 
+
 namespace Database\Seeders;
 
-use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
-class ProjectSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+    public function run() : void
     {
-        Project::factory()->count(10)->create();
+        Category::factory()->count(50)->create();
     }
 }

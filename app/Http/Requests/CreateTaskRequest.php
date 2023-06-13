@@ -31,6 +31,8 @@ class CreateTaskRequest extends FormRequest
             'client_id' => ['required', 'exists:clients,id'],
             'project_id' => ['required', 'exists:projects,id'],
             'status' => ['required'],
+            'categories.*' => ['integer'],
+            'categories' => ['required', 'array'],
         ];
     }
 }

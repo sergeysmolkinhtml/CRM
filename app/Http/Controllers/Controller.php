@@ -10,7 +10,8 @@ use OpenApi\Annotations as OA;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+    use AuthorizesRequests;
+    use ValidatesRequests;
 
     public function __construct()
     {

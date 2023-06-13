@@ -17,6 +17,7 @@
                         <p class="mb-0">{{ $task->client->company_name }}</p>
                         <p class="mb-0">{{ $task->client->company_address }}</p>
                         <p class="mb-0">{{ $task->client->company_city }}, {{ $task->client->company_zip }}</p>
+                        <p class="mb-0">{{ $task->categories }}</p>
                     </div>
                 </div>
             </div>
